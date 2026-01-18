@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://sct2jkndf0md"]
+
+[ext_resource type="PackedScene" uid="uid://dhuvqhn8q72u4" path="res://character.tscn" id="1_80nbo"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Character" parent="." instance=ExtResource("1_80nbo")]
+position = Vector2(581, 301)
+
+[node name="Character2" parent="." instance=ExtResource("1_80nbo")]
+position = Vector2(191, 364)
+
+[node name="Character3" parent="." instance=ExtResource("1_80nbo")]
+position = Vector2(868, 480)
+
+[node name="Character4" parent="." instance=ExtResource("1_80nbo")]
+position = Vector2(495, 80)

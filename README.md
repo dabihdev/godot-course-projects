@@ -1,0 +1,1 @@
+Godot examples and exercises that I use in my Godot GameDev course.
