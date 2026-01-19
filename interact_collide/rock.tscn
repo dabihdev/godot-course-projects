@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0otcd8rnh1kg"]
+
+[ext_resource type="Texture2D" uid="uid://dvvl3fmpmh8df" path="res://rock-stone-icon-png.png" id="1_o0qsl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0qsl"]
+size = Vector2(201, 195)
+
+[node name="Rock" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.99998, -1.00002)
+scale = Vector2(0.554286, 0.554286)
+texture = ExtResource("1_o0qsl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -1.5)
+shape = SubResource("RectangleShape2D_o0qsl")
