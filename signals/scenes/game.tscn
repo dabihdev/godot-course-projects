@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://com765gur6ael"]
+
+[ext_resource type="PackedScene" uid="uid://k4upiejocdcl" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://h5afrmw1bpa1" path="res://scenes/button.tscn" id="2_yqjtg"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(820, 323)
+
+[node name="Button" parent="." instance=ExtResource("2_yqjtg")]
+
+[connection signal="pressed" from="Button" to="Player" method="rotate_body"]

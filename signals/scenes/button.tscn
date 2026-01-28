@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://h5afrmw1bpa1"]
+
+[node name="Button" type="Button"]
+offset_left = 184.0
+offset_top = 250.0
+offset_right = 488.0
+offset_bottom = 387.0
+theme_override_font_sizes/font_size = 61
+text = "ROTATE"
