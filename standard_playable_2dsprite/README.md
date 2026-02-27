@@ -1,0 +1,1 @@
+Standard 2D player (Node2D) that can move in all four directions easily, avoiding if statements and just getting the vector from the input..
