@@ -1,12 +1,12 @@
-extends Node2D
+extends CharacterBody2D
 
-@export var speed = 300.0
+@export var speed = 500.0
 
-var direction = Vector2.ZERO
+var direction = Vector2.ZERO # Vector2(0,0)
 const rotation_speed = PI * 3
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	# 1) Input
 	# get rotation direction from left-right input
 	var rotation_direction = Input.get_axis("turn_left", "turn_right")
@@ -20,3 +20,5 @@ func _process(delta: float) -> void:
 	
 	# finally, update position
 	position += movement_direction * direction * speed * delta
+	# velocity = movement_direction * direction * speed
+	# move_and_slide()
