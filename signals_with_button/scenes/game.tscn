@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb7e7pcrhabxr"]
+
+[ext_resource type="PackedScene" uid="uid://bvficha6xmi3y" path="res://scenes/character.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://d1opftm1klxse" path="res://scripts/character.gd" id="2_yqjtg"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 278.0
+offset_top = 263.0
+offset_right = 521.0
+offset_bottom = 371.0
+theme_override_font_sizes/font_size = 50
+text = "Rotate"
+
+[node name="Character" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(781, 321)
+script = ExtResource("2_yqjtg")
+
+[connection signal="pressed" from="Button" to="Character" method="_on_button_pressed"]

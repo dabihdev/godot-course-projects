@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bv6ce0skeyowd"]
+[gd_scene load_steps=3 format=3 uid="uid://bv6ce0skeyowd"]
 
 [ext_resource type="PackedScene" uid="uid://u56u360i5ec8" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://d10cy68w4rsso" path="res://scenes/boost_area.tscn" id="2_yqjtg"]
 
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(589, 327)
+position = Vector2(297, 631)
+
+[node name="BoostArea" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(669, 630)
+
+[connection signal="body_entered" from="BoostArea" to="Player" method="_on_boost_area_body_entered"]
