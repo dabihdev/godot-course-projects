@@ -14,9 +14,3 @@ texture = ExtResource("1_3vyb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_g2els")
-
-[node name="BoostTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-one_shot = true
-
-[connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]

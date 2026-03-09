@@ -20,14 +20,6 @@ func _physics_process(delta: float) -> void:
 	direction = Vector2.DOWN.rotated(rotation)
 	
 	# finally, update position
-	position += movement_direction * direction * speed * delta
+	position += movement_direction * direction * current_speed * delta
 	# velocity = movement_direction * direction * speed
 	# move_and_slide()
-
-func _on_boost_timer_timeout() -> void:
-	speed = 500.0 # reset speed
-
-
-func _on_boost_area_body_entered(body: CharacterBody2D) -> void:
-	speed = speed * 2
-	$"./BoostTimer".start() # Replace with function body.
