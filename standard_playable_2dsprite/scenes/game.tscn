@@ -1,8 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://bv6ce0skeyowd"]
+[gd_scene load_steps=4 format=3 uid="uid://bv6ce0skeyowd"]
 
 [ext_resource type="PackedScene" uid="uid://u56u360i5ec8" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://cpfnn608nv1nb" path="res://icon.svg" id="2_yqjtg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
+size = Vector2(314, 205)
 
 [node name="Game" type="Node2D"]
 
+[node name="HurtingArea" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="HurtingArea"]
+position = Vector2(958, 304)
+scale = Vector2(2.79688, 2.1875)
+texture = ExtResource("2_yqjtg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtingArea"]
+position = Vector2(961, 309)
+shape = SubResource("RectangleShape2D_lnu2h")
+
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(589, 327)
+
+[connection signal="body_entered" from="HurtingArea" to="Player" method="_on_hurting_area_body_entered"]
