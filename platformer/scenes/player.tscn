@@ -1,7 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://itswcoascuf4"]
+[gd_scene load_steps=26 format=3 uid="uid://itswcoascuf4"]
 
 [ext_resource type="Texture2D" uid="uid://jf5l7nyt0rc7" path="res://assets/sprites/knight.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://c0dj2ffehlbkb" path="res://scripts/player.gd" id="1_g2els"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(192, 160, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -87,6 +91,14 @@ region = Rect2(224, 96, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_a38lo")
+}],
+"loop": false,
+"name": &"crouching",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_g2els")
 }, {
 "duration": 1.0,
@@ -156,9 +168,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
-radius = 18.0
-height = 70.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(31, 60)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
@@ -168,9 +179,7 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_a38lo")
 animation = &"idle"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.777833
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 12)
-shape = SubResource("CapsuleShape2D_3vyb7")
+position = Vector2(0, 17)
+shape = SubResource("RectangleShape2D_g2els")
