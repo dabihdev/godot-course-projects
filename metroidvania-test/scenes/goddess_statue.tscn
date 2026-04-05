@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://82788yccr3bb"]
+
+[ext_resource type="Script" uid="uid://bi1s8rc73jtne" path="res://scripts/goddess_statue.gd" id="1_4vqme"]
+[ext_resource type="Texture2D" uid="uid://c1vnxafudt4qp" path="res://assets/GandalfHardcore FREE Platformer Assets/Angel Statue.png" id="1_5rk0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rk0o"]
+size = Vector2(537.5, 296.5)
+
+[node name="GoddessStatue" type="Area2D"]
+script = ExtResource("1_4vqme")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_5rk0o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, -22)
+shape = SubResource("RectangleShape2D_5rk0o")
+
+[node name="DialogBox" type="ColorRect" parent="."]
+visible = false
+offset_left = -172.0
+offset_top = -261.0
+offset_right = 209.0
+offset_bottom = -171.0
+color = Color(0, 0, 0, 0.45098)
+
+[node name="Label" type="Label" parent="DialogBox"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 25
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
