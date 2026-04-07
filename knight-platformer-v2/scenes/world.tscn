@@ -1,0 +1,160 @@
+[gd_scene load_steps=14 format=3 uid="uid://xrqr3m160x1r"]
+
+[ext_resource type="Texture2D" uid="uid://wcoyhai15upn" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 1.png" id="1_71j4m"]
+[ext_resource type="PackedScene" uid="uid://bpb1so4cctbl5" path="res://scenes/player.tscn" id="1_nnsk1"]
+[ext_resource type="Texture2D" uid="uid://dbncn2xrfh5v5" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 5.png" id="1_rwgxs"]
+[ext_resource type="Texture2D" uid="uid://dmfjvypxp8gfv" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 2.png" id="2_qfnet"]
+[ext_resource type="Texture2D" uid="uid://14k6ellng45s" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 3.png" id="3_i7141"]
+[ext_resource type="Texture2D" uid="uid://dwdtdsh4jvy76" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 4.png" id="4_4mrxx"]
+[ext_resource type="PackedScene" uid="uid://82788yccr3bb" path="res://scenes/goddess_statue.tscn" id="6_i7141"]
+[ext_resource type="PackedScene" uid="uid://8eigb81i1h3n" path="res://scenes/platform.tscn" id="7_4mrxx"]
+[ext_resource type="PackedScene" uid="uid://d01e842njvx6m" path="res://scenes/apple_heap.tscn" id="8_7r4gi"]
+
+[sub_resource type="Animation" id="Animation_7r4gi"]
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1655, 247), Vector2(2000, 247)]
+}
+
+[sub_resource type="Animation" id="Animation_4mrxx"]
+resource_name = "back_n_forth"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1655, 247), Vector2(2000, 247)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w7kh3"]
+_data = {
+&"RESET": SubResource("Animation_7r4gi"),
+&"back_n_forth": SubResource("Animation_4mrxx")
+}
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rwgxs"]
+distance = -921.0
+
+[node name="World" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
+
+[node name="Layer1" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+position = Vector2(91, -7)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(2000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxBackground/Layer1"]
+position = Vector2(912, 468)
+scale = Vector2(1.95508, 2.66474)
+texture = ExtResource("1_rwgxs")
+
+[node name="ColorRect" type="ColorRect" parent="Background/ParallaxBackground/Layer1"]
+offset_left = -91.0
+offset_top = -797.0
+offset_right = 1908.0
+offset_bottom = 7.0
+color = Color(0.823529, 0.72549, 0.501961, 1)
+
+[node name="Layer2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+position = Vector2(91, -7)
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(2000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxBackground/Layer2"]
+position = Vector2(912, 468)
+scale = Vector2(1.95508, 2.66474)
+texture = ExtResource("4_4mrxx")
+
+[node name="Layer3" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+position = Vector2(91, -7)
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(2000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxBackground/Layer3"]
+position = Vector2(912, 468)
+scale = Vector2(1.95508, 2.66474)
+texture = ExtResource("3_i7141")
+
+[node name="Layer4" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+position = Vector2(91, -7)
+motion_scale = Vector2(0.9, 0.9)
+motion_mirroring = Vector2(2000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxBackground/Layer4"]
+position = Vector2(912, 468)
+scale = Vector2(1.95508, 2.66474)
+texture = ExtResource("2_qfnet")
+
+[node name="Layer5" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+position = Vector2(91, -7)
+motion_mirroring = Vector2(2000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxBackground/Layer5"]
+position = Vector2(912, 468)
+scale = Vector2(1.95508, 2.66474)
+texture = ExtResource("1_71j4m")
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="GoddessStatue" parent="Foreground" instance=ExtResource("6_i7141")]
+position = Vector2(2486, -198)
+message = "Welcome to this lands,
+young traveller"
+
+[node name="AppleHeap" parent="Foreground" instance=ExtResource("8_7r4gi")]
+z_index = 1
+position = Vector2(1192, 568)
+
+[node name="Platforms" type="Node2D" parent="Foreground"]
+
+[node name="Platform" parent="Foreground/Platforms" instance=ExtResource("7_4mrxx")]
+position = Vector2(777, 746)
+
+[node name="Platform2" parent="Foreground/Platforms" instance=ExtResource("7_4mrxx")]
+position = Vector2(1059, 583)
+
+[node name="Platform3" parent="Foreground/Platforms" instance=ExtResource("7_4mrxx")]
+position = Vector2(1351, 418)
+
+[node name="Platform4" parent="Foreground/Platforms" instance=ExtResource("7_4mrxx")]
+position = Vector2(1655, 247)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Platforms/Platform4"]
+libraries = {
+&"": SubResource("AnimationLibrary_w7kh3")
+}
+autoplay = "RESET"
+
+[node name="Platform5" parent="Foreground/Platforms" instance=ExtResource("7_4mrxx")]
+position = Vector2(1984, 73)
+
+[node name="Platform6" parent="Foreground/Platforms" instance=ExtResource("7_4mrxx")]
+position = Vector2(2364, -88)
+
+[node name="Player" parent="." instance=ExtResource("1_nnsk1")]
+position = Vector2(680, 705)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(3, -1)
+shape = SubResource("WorldBoundaryShape2D_rwgxs")

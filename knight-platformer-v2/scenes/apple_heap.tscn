@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://d01e842njvx6m"]
+
+[ext_resource type="Script" uid="uid://b07ky7u62v50v" path="res://scripts/apple_heap.gd" id="1_ke1g6"]
+[ext_resource type="Texture2D" uid="uid://csu5rwr0cf432" path="res://assets/GandalfHardcore FREE Platformer Assets/Decor.png" id="1_qa3wd"]
+
+[node name="AppleHeap" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_ke1g6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_qa3wd")
+region_enabled = true
+region_rect = Rect2(354, 14, 28, 18)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-3.1662e-06, -0.389473)
+scale = Vector2(0.83, 0.877868)
+polygon = PackedVector2Array(-9, -13, 8, -13, 19.2771, -1.83459, 28.3133, 12.4045, 33, 21, -9, 21, -33, 21, -32.5301, 15.2523, -22.2892, 3.29147, -20.4819, -1.26503, -16, -9)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -19.0
+offset_top = -54.5
+offset_right = 18.0
+offset_bottom = -24.5
+theme_override_font_sizes/font_size = 21
+text = "Press [A] to Eat"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
