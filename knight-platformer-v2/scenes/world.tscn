@@ -1,57 +1,611 @@
-[gd_scene load_steps=14 format=3 uid="uid://xrqr3m160x1r"]
+[gd_scene load_steps=14 format=4 uid="uid://xrqr3m160x1r"]
 
 [ext_resource type="Texture2D" uid="uid://wcoyhai15upn" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 1.png" id="1_71j4m"]
+[ext_resource type="Script" uid="uid://cv6aeqqm60eid" path="res://scripts/ui.gd" id="1_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://bpb1so4cctbl5" path="res://scenes/player.tscn" id="1_nnsk1"]
 [ext_resource type="Texture2D" uid="uid://dbncn2xrfh5v5" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 5.png" id="1_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://dmfjvypxp8gfv" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 2.png" id="2_qfnet"]
 [ext_resource type="Texture2D" uid="uid://14k6ellng45s" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 3.png" id="3_i7141"]
 [ext_resource type="Texture2D" uid="uid://dwdtdsh4jvy76" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 4.png" id="4_4mrxx"]
-[ext_resource type="PackedScene" uid="uid://82788yccr3bb" path="res://scenes/goddess_statue.tscn" id="6_i7141"]
-[ext_resource type="PackedScene" uid="uid://8eigb81i1h3n" path="res://scenes/platform.tscn" id="7_4mrxx"]
-[ext_resource type="PackedScene" uid="uid://d01e842njvx6m" path="res://scenes/apple_heap.tscn" id="8_7r4gi"]
+[ext_resource type="Texture2D" uid="uid://biqeomj36yalg" path="res://assets/GandalfHardcore FREE Platformer Assets/Floor Tiles1.png" id="6_i7141"]
+[ext_resource type="Texture2D" uid="uid://bkmuf66wtlv3n" path="res://assets/GandalfHardcore FREE Platformer Assets/Tree3.png" id="7_7r4gi"]
+[ext_resource type="PackedScene" uid="uid://d01e842njvx6m" path="res://scenes/apple_heap.tscn" id="8_w7kh3"]
+[ext_resource type="PackedScene" uid="uid://82788yccr3bb" path="res://scenes/goddess_statue.tscn" id="9_w7kh3"]
 
-[sub_resource type="Animation" id="Animation_7r4gi"]
-length = 2.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.96667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1655, 247), Vector2(2000, 247)]
-}
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mrxx"]
+texture = ExtResource("6_i7141")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:0/0 = 0
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+17:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+16:1/0 = 0
+17:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+16:2/0 = 0
+17:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+16:3/0 = 0
+17:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+16:4/0 = 0
+17:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+16:5/0 = 0
+17:5/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+16:6/0 = 0
+17:6/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+16:7/0 = 0
+17:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+16:8/0 = 0
+17:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+16:10/0 = 0
+17:10/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+16:11/0 = 0
+17:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+15:12/0 = 0
+16:12/0 = 0
+17:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+14:13/0 = 0
+15:13/0 = 0
+16:13/0 = 0
+17:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+16:14/0 = 0
+17:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+12:15/0 = 0
+13:15/0 = 0
+16:15/0 = 0
+17:15/0 = 0
+0:16/0 = 0
+1:16/0 = 0
+2:16/0 = 0
+3:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+7:16/0 = 0
+8:16/0 = 0
+9:16/0 = 0
+10:16/0 = 0
+11:16/0 = 0
+12:16/0 = 0
+13:16/0 = 0
+14:16/0 = 0
+15:16/0 = 0
+16:16/0 = 0
+17:16/0 = 0
+0:17/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+6:17/0 = 0
+7:17/0 = 0
+8:17/0 = 0
+9:17/0 = 0
+10:17/0 = 0
+11:17/0 = 0
+12:17/0 = 0
+13:17/0 = 0
+14:17/0 = 0
+15:17/0 = 0
+16:17/0 = 0
+17:17/0 = 0
+2:18/0 = 0
+3:18/0 = 0
+4:18/0 = 0
+5:18/0 = 0
+8:18/0 = 0
+9:18/0 = 0
+10:18/0 = 0
+11:18/0 = 0
+12:18/0 = 0
+13:18/0 = 0
+14:18/0 = 0
+15:18/0 = 0
+16:18/0 = 0
+17:18/0 = 0
+2:19/0 = 0
+3:19/0 = 0
+4:19/0 = 0
+5:19/0 = 0
+8:19/0 = 0
+9:19/0 = 0
+10:19/0 = 0
+11:19/0 = 0
+12:19/0 = 0
+13:19/0 = 0
+14:19/0 = 0
+15:19/0 = 0
+16:19/0 = 0
+17:19/0 = 0
+0:20/0 = 0
+1:20/0 = 0
+2:20/0 = 0
+3:20/0 = 0
+4:20/0 = 0
+5:20/0 = 0
+6:20/0 = 0
+7:20/0 = 0
+8:20/0 = 0
+9:20/0 = 0
+10:20/0 = 0
+11:20/0 = 0
+12:20/0 = 0
+13:20/0 = 0
+14:20/0 = 0
+15:20/0 = 0
+16:20/0 = 0
+17:20/0 = 0
+0:21/0 = 0
+1:21/0 = 0
+2:21/0 = 0
+3:21/0 = 0
+4:21/0 = 0
+5:21/0 = 0
+6:21/0 = 0
+7:21/0 = 0
+8:21/0 = 0
+9:21/0 = 0
+10:21/0 = 0
+11:21/0 = 0
+12:21/0 = 0
+13:21/0 = 0
+2:22/0 = 0
+3:22/0 = 0
+4:22/0 = 0
+5:22/0 = 0
+8:22/0 = 0
+9:22/0 = 0
+10:22/0 = 0
+11:22/0 = 0
+12:22/0 = 0
+13:22/0 = 0
+14:22/0 = 0
+15:22/0 = 0
+16:22/0 = 0
+17:22/0 = 0
+2:23/0 = 0
+3:23/0 = 0
+4:23/0 = 0
+5:23/0 = 0
+8:23/0 = 0
+9:23/0 = 0
+10:23/0 = 0
+11:23/0 = 0
+12:23/0 = 0
+13:23/0 = 0
+14:23/0 = 0
+15:23/0 = 0
+16:23/0 = 0
+17:23/0 = 0
+0:24/0 = 0
+1:24/0 = 0
+2:24/0 = 0
+3:24/0 = 0
+4:24/0 = 0
+5:24/0 = 0
+6:24/0 = 0
+7:24/0 = 0
+8:24/0 = 0
+9:24/0 = 0
+10:24/0 = 0
+11:24/0 = 0
+12:24/0 = 0
+13:24/0 = 0
+14:24/0 = 0
+15:24/0 = 0
+16:24/0 = 0
+17:24/0 = 0
+0:25/0 = 0
+1:25/0 = 0
+2:25/0 = 0
+3:25/0 = 0
+4:25/0 = 0
+5:25/0 = 0
+6:25/0 = 0
+7:25/0 = 0
+8:25/0 = 0
+9:25/0 = 0
+10:25/0 = 0
+11:25/0 = 0
+12:25/0 = 0
+13:25/0 = 0
+14:25/0 = 0
+15:25/0 = 0
+16:25/0 = 0
+17:25/0 = 0
+0:26/0 = 0
+1:26/0 = 0
+2:26/0 = 0
+3:26/0 = 0
+4:26/0 = 0
+5:26/0 = 0
+6:26/0 = 0
+7:26/0 = 0
+10:26/0 = 0
+11:26/0 = 0
+12:26/0 = 0
+13:26/0 = 0
+16:26/0 = 0
+17:26/0 = 0
+0:27/0 = 0
+1:27/0 = 0
+2:27/0 = 0
+3:27/0 = 0
+4:27/0 = 0
+5:27/0 = 0
+6:27/0 = 0
+7:27/0 = 0
+10:27/0 = 0
+11:27/0 = 0
+12:27/0 = 0
+13:27/0 = 0
+16:27/0 = 0
+17:27/0 = 0
+0:28/0 = 0
+1:28/0 = 0
+2:28/0 = 0
+3:28/0 = 0
+4:28/0 = 0
+5:28/0 = 0
+6:28/0 = 0
+7:28/0 = 0
+8:28/0 = 0
+9:28/0 = 0
+10:28/0 = 0
+11:28/0 = 0
+12:28/0 = 0
+13:28/0 = 0
+14:28/0 = 0
+15:28/0 = 0
+16:28/0 = 0
+17:28/0 = 0
+0:29/0 = 0
+1:29/0 = 0
+2:29/0 = 0
+3:29/0 = 0
+4:29/0 = 0
+5:29/0 = 0
+6:29/0 = 0
+7:29/0 = 0
+8:29/0 = 0
+9:29/0 = 0
+10:29/0 = 0
+11:29/0 = 0
+12:29/0 = 0
+13:29/0 = 0
+14:29/0 = 0
+15:29/0 = 0
+16:29/0 = 0
+17:29/0 = 0
+2:30/0 = 0
+3:30/0 = 0
+4:30/0 = 0
+5:30/0 = 0
+8:30/0 = 0
+9:30/0 = 0
+10:30/0 = 0
+11:30/0 = 0
+12:30/0 = 0
+13:30/0 = 0
+14:30/0 = 0
+15:30/0 = 0
+16:30/0 = 0
+17:30/0 = 0
+2:31/0 = 0
+3:31/0 = 0
+4:31/0 = 0
+5:31/0 = 0
+8:31/0 = 0
+9:31/0 = 0
+10:31/0 = 0
+11:31/0 = 0
+12:31/0 = 0
+13:31/0 = 0
+14:31/0 = 0
+15:31/0 = 0
+16:31/0 = 0
+17:31/0 = 0
+0:32/0 = 0
+1:32/0 = 0
+2:32/0 = 0
+3:32/0 = 0
+4:32/0 = 0
+5:32/0 = 0
+6:32/0 = 0
+7:32/0 = 0
+8:32/0 = 0
+9:32/0 = 0
+10:32/0 = 0
+11:32/0 = 0
+12:32/0 = 0
+13:32/0 = 0
+14:32/0 = 0
+15:32/0 = 0
+16:32/0 = 0
+17:32/0 = 0
+0:33/0 = 0
+1:33/0 = 0
+2:33/0 = 0
+3:33/0 = 0
+4:33/0 = 0
+5:33/0 = 0
+6:33/0 = 0
+7:33/0 = 0
+8:33/0 = 0
+9:33/0 = 0
+10:33/0 = 0
+11:33/0 = 0
+12:33/0 = 0
+13:33/0 = 0
+2:34/0 = 0
+3:34/0 = 0
+4:34/0 = 0
+5:34/0 = 0
+8:34/0 = 0
+9:34/0 = 0
+10:34/0 = 0
+11:34/0 = 0
+12:34/0 = 0
+13:34/0 = 0
+14:34/0 = 0
+15:34/0 = 0
+16:34/0 = 0
+17:34/0 = 0
+2:35/0 = 0
+3:35/0 = 0
+4:35/0 = 0
+5:35/0 = 0
+8:35/0 = 0
+9:35/0 = 0
+10:35/0 = 0
+11:35/0 = 0
+12:35/0 = 0
+13:35/0 = 0
+14:35/0 = 0
+15:35/0 = 0
+16:35/0 = 0
+17:35/0 = 0
 
-[sub_resource type="Animation" id="Animation_4mrxx"]
-resource_name = "back_n_forth"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1655, 247), Vector2(2000, 247)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_w7kh3"]
-_data = {
-&"RESET": SubResource("Animation_7r4gi"),
-&"back_n_forth": SubResource("Animation_4mrxx")
-}
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rwgxs"]
-distance = -921.0
+[sub_resource type="TileSet" id="TileSet_7r4gi"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_4mrxx")
 
 [node name="World" type="Node2D"]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 2001.0
+offset_bottom = 923.0
+script = ExtResource("1_e3hyu")
+
+[node name="HP" type="Label" parent="HUD/UI"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 11.0
+offset_right = 708.0
+offset_bottom = 148.0
+theme_override_font_sizes/font_size = 66
+text = "HP: .../..."
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -115,46 +669,29 @@ texture = ExtResource("1_71j4m")
 
 [node name="Foreground" type="Node2D" parent="."]
 
-[node name="GoddessStatue" parent="Foreground" instance=ExtResource("6_i7141")]
-position = Vector2(2486, -198)
-message = "Welcome to this lands,
-young traveller"
+[node name="Terrain" type="Node2D" parent="Foreground"]
 
-[node name="AppleHeap" parent="Foreground" instance=ExtResource("8_7r4gi")]
-z_index = 1
-position = Vector2(1192, 568)
+[node name="Tree" type="Sprite2D" parent="Foreground/Terrain"]
+position = Vector2(2519, 361)
+scale = Vector2(4, 4)
+texture = ExtResource("7_7r4gi")
 
-[node name="Platforms" type="Node2D" parent="Foreground"]
+[node name="Ground" type="TileMapLayer" parent="Foreground/Terrain"]
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("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AAApAA4AAAAMAAAAAAAqAA0AAAAMAAAAAAAqAA4AAAAMAAAAAAArAA0AAAAMAAAAAAArAA4AAAAMAAAAAAAsAA0AAAAMAAAAAAAsAA4AAAAMAAAAAAAtAA0AAAAMAAAAAAAtAA4AAAAMAAAAAAAuAA0AAAAMAAAAAAAuAA4AAAAMAAAAAAAvAA0AAAAMAAAAAAAvAA4AAAAMAAAAAAAwAA0AAAAMAAAAAAAwAA4AAAAMAAAAAAAxAA0AAAAMAAAAAAAxAA4AAAAMAAAAAAAyAA0AAAAMAAAAAAAyAA4AAAAMAAAAAAAzAA0AAAAMAAAAAAAzAA4AAAAMAAAAAAA0AA0AAAAMAAAAAAA0AA4AAAAMAAAAAAA1AA0AAAAMAAAAAAA1AA4AAAAMAAAAAAA2AA0AAAAMAAAAAAA2AA4AAAAMAAAAAAA3AA0AAAAMAAAAAAA3AA4AAAAMAAAAAAA4AA0AAAAMAAAAAAA4AA4AAAAMAAAAAAA5AA0AAAAMAAAAAAA5AA4AAAAMAAAAAAA6AA0AAAAMAAAAAAA6AA4AAAAMAAAAAAA7AA0AAAAMAAAAAAA7AA4AAAAMAAAAAAA8AA0AAAAMAAAAAAA8AA4AAAAMAAAAAAA9AA0AAAAMAAAAAAA9AA4AAAAMAAAAAAA+AA0AAAAMAAAAAAA+AA4AAAAMAAAAAAA/AA0AAAAMAAAAAAA/AA4AAAAMAAAAAABAAA0AAAAMAAAAAABAAA4AAAAMAAAAAABBAA0AAAAMAAAAAABBAA4AAAAMAAAAAABCAA0AAAAMAAAAAABCAA4AAAAMAAAAAABDAAwAAAAHAAAAAABDAA0AAAAMAAAAAABEAAwAAAAIAAAAAABEAA0AAAAMAAAAAABFAAwAAAAJAAAAAABFAA0AAAAMAAAAAABGAAwAAAAKAAAAAABGAA0AAAAMAAAAAABHAAwAAAAHAAAAAABHAA0AAAAMAAAAAABIAAwAAAAIAAAAAABIAA0AAAAMAAAAAABJAAwAAAAJAAAAAABJAA0AAAAMAAAAAABKAAwAAAAKAAAAAABKAA0AAAAMAAAAAABLAAwAAAAHAAAAAABLAA0AAAAMAAAAAABMAAwAAAAIAAAAAABMAA0AAAAMAAAAAABNAAwAAAAJAAAAAABNAA0AAAAMAAAAAABOAAwAAAAKAAAAAABOAA0AAAAMAAAA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")
+tile_set = SubResource("TileSet_7r4gi")
 
-[node name="Platform" parent="Foreground/Platforms" instance=ExtResource("7_4mrxx")]
-position = Vector2(777, 746)
-
-[node name="Platform2" parent="Foreground/Platforms" instance=ExtResource("7_4mrxx")]
-position = Vector2(1059, 583)
-
-[node name="Platform3" parent="Foreground/Platforms" instance=ExtResource("7_4mrxx")]
-position = Vector2(1351, 418)
-
-[node name="Platform4" parent="Foreground/Platforms" instance=ExtResource("7_4mrxx")]
-position = Vector2(1655, 247)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Platforms/Platform4"]
-libraries = {
-&"": SubResource("AnimationLibrary_w7kh3")
-}
-autoplay = "RESET"
-
-[node name="Platform5" parent="Foreground/Platforms" instance=ExtResource("7_4mrxx")]
-position = Vector2(1984, 73)
-
-[node name="Platform6" parent="Foreground/Platforms" instance=ExtResource("7_4mrxx")]
-position = Vector2(2364, -88)
+[node name="AppleHeap" parent="Foreground/Terrain" instance=ExtResource("8_w7kh3")]
+position = Vector2(3000, 733)
 
 [node name="Player" parent="." instance=ExtResource("1_nnsk1")]
-position = Vector2(680, 705)
+z_index = 1
+position = Vector2(3213, 584)
 
-[node name="Floor" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(3, -1)
-shape = SubResource("WorldBoundaryShape2D_rwgxs")
+[node name="GoddessStatue" parent="." instance=ExtResource("9_w7kh3")]
+position = Vector2(1642, 644)
+message = "Welcome to the Forests of Autumn,
+valiant knight.
+I am Vanth,
+the Winged Goddess.
+Be careful of enemies!"

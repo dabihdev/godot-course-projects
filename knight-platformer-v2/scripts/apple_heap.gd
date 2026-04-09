@@ -1,7 +1,9 @@
 extends Area2D
 
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var label: Label = $Label
+@onready var hint_label: Label = $HintLabel
+@onready var hp_label: Label = $HPLabel
+
 
 # AppleHeap states
 enum States {
@@ -16,7 +18,7 @@ var can_eat: bool = false
 # small heap texture crop
 # get smaller version of apple heap from tileset
 # position  (x, y) , size (widht, height)
-var small_heap_region = Rect2(326.0, 21.0, 19.0, 11.0)
+const SMALL_HEAP_REGION = Rect2(326.0, 21.0, 19.0, 11.0)
 	
 # main function
 func _physics_process(delta: float):
@@ -29,9 +31,13 @@ func _physics_process(delta: float):
 	# AppleHeap state. 'Eat' action is triggered
 	# by a specific key
 	if Input.is_action_just_pressed("action")	:
+		# signal HP have been gained
+		Signals.gain_hp.emit()
+		
+		# Perform action based on current state
 		match current_state:
 			States.FULL:
-				sprite.region_rect = small_heap_region
+				sprite.region_rect = SMALL_HEAP_REGION
 				sprite.position.y += 8 # change base position
 				current_state = States.HALF # reduce the heap
 			States.HALF:
@@ -40,12 +46,10 @@ func _physics_process(delta: float):
 
 # when entering the apples area...
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
-		label.visible = true
-		can_eat = true
+	hint_label.visible = true
+	can_eat = true
 
 # ...when exiting the apples area
 func _on_body_exited(body: Node2D) -> void:
-	if body.name == "Player":
-		label.visible = false
-		can_eat = false
+	hint_label.visible = false
+	can_eat = false

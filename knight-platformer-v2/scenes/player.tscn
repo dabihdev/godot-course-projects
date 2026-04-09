@@ -284,7 +284,9 @@ size = Vector2(15, 37)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(4, 4)
+collision_layer = 3
 script = ExtResource("1_g2els")
+current_hp = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3v2ag")

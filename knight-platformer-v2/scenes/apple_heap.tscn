@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://csu5rwr0cf432" path="res://assets/GandalfHardcore FREE Platformer Assets/Decor.png" id="1_qa3wd"]
 
 [node name="AppleHeap" type="Area2D"]
+z_index = 2
 scale = Vector2(2, 2)
+collision_mask = 2
 script = ExtResource("1_ke1g6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -18,7 +20,7 @@ position = Vector2(-3.1662e-06, -0.389473)
 scale = Vector2(0.83, 0.877868)
 polygon = PackedVector2Array(-9, -13, 8, -13, 19.2771, -1.83459, 28.3133, 12.4045, 33, 21, -9, 21, -33, 21, -32.5301, 15.2523, -22.2892, 3.29147, -20.4819, -1.26503, -16, -9)
 
-[node name="Label" type="Label" parent="."]
+[node name="HintLabel" type="Label" parent="."]
 visible = false
 offset_left = -19.0
 offset_top = -54.5
@@ -26,6 +28,16 @@ offset_right = 18.0
 offset_bottom = -24.5
 theme_override_font_sizes/font_size = 21
 text = "Press [A] to Eat"
+horizontal_alignment = 1
+
+[node name="HPLabel" type="Label" parent="."]
+visible = false
+offset_left = -22.0
+offset_top = -37.0
+offset_right = 18.0
+offset_bottom = -14.0
+theme_override_font_sizes/font_size = 13
+text = "+200"
 horizontal_alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

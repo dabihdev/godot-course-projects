@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 # preloaded objects
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var label: Label = $Label
 
 # player speeds
 @export var max_speed = 500.0
@@ -20,14 +21,19 @@ enum States {
 }
 var current_state = States.IDLE
 
-# world gravity
-var gravity = 2500.0 *Vector2(0, 1)
+# Player's stats
+@export var max_hp    : int = 100
+@export var current_hp: int = 100
 
+# SETUP
+func _ready():
+	Signals.gain_hp.connect(_on_gain_hp)
 
+# MAIN LOOP
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += gravity * delta
+		velocity += Globals.gravity * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -91,3 +97,9 @@ func play_animation():
 			current_speed = crouch_speed # slower when crouched
 			sprite.play("crouch_walk")
 		
+func _on_gain_hp():
+	var total_hp = current_hp + 10
+	if total_hp > max_hp:
+		current_hp = max_hp
+	else:
+		current_hp = total_hp

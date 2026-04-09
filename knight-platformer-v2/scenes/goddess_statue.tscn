@@ -7,6 +7,7 @@
 size = Vector2(234, 296.5)
 
 [node name="GoddessStatue" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_4vqme")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -17,18 +18,13 @@ texture = ExtResource("1_5rk0o")
 position = Vector2(4, -18)
 shape = SubResource("RectangleShape2D_5rk0o")
 
-[node name="DialogBox" type="ColorRect" parent="."]
-visible = false
-offset_left = -172.0
-offset_top = -261.0
-offset_right = 209.0
-offset_bottom = -171.0
-color = Color(0, 0, 0, 0.45098)
-
-[node name="Label" type="Label" parent="DialogBox"]
-layout_mode = 0
-offset_right = 256.0
-offset_bottom = 87.0
+[node name="Label" type="Label" parent="."]
+offset_left = 86.0
+offset_top = -208.0
+offset_right = 342.0
+offset_bottom = -121.0
 theme_override_font_sizes/font_size = 25
+vertical_alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

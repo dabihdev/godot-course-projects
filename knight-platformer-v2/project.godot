@@ -1,10 +1,23 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
 config_version=5
 
 [application]
 
-config/name="knight-platformer-v1"
+config/name="knight-platformer-v2"
 run/main_scene="uid://xrqr3m160x1r"
 config/features=PackedStringArray("4.4", "Forward Plus")
+
+[autoload]
+
+Signals="*res://scripts/signals.gd"
+Globals="*res://scripts/globals.gd"
 
 [display]
 
