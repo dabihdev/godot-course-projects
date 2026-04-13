@@ -1,9 +1,12 @@
 extends Area2D
 
+# Children Nodes
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hint_label: Label = $HintLabel
 @onready var hp_label: Label = $HPLabel
 
+# Player's Body Initialization
+var entered_body : Node2D
 
 # AppleHeap states
 enum States {
@@ -12,29 +15,29 @@ enum States {
 }
 var current_state = States.FULL # current state of AppleHeap
 
-# is the player near enough to eat the apples?
-var can_eat: bool = false
-
 # small heap texture crop
 # get smaller version of apple heap from tileset
 # position  (x, y) , size (widht, height)
 const SMALL_HEAP_REGION = Rect2(326.0, 21.0, 19.0, 11.0)
-	
+
+# amount of HP gained
+@export var hp_amount: int = 10
+
 # main function
 func _physics_process(delta: float):
 	# if player not near enough, stop it here
-	if not can_eat:
+	if not entered_body:
 		return
-	
+		
 	# if player is near enough, change
 	# sprite texture according to the
 	# AppleHeap state. 'Eat' action is triggered
 	# by a specific key
 	if Input.is_action_just_pressed("action")	:
-		# signal HP have been gained
-		Signals.gain_hp.emit()
+		# update entered body's health
+		entered_body.heal(hp_amount)
 		
-		# Perform action based on current state
+		# Update Apple Heap State
 		match current_state:
 			States.FULL:
 				sprite.region_rect = SMALL_HEAP_REGION
@@ -47,9 +50,9 @@ func _physics_process(delta: float):
 # when entering the apples area...
 func _on_body_entered(body: Node2D) -> void:
 	hint_label.visible = true
-	can_eat = true
+	entered_body = body
 
 # ...when exiting the apples area
 func _on_body_exited(body: Node2D) -> void:
 	hint_label.visible = false
-	can_eat = false
+	entered_body = body

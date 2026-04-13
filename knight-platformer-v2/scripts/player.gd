@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 # preloaded objects
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var label: Label = $Label
 
 # player speeds
 @export var max_speed = 500.0
@@ -25,9 +24,8 @@ var current_state = States.IDLE
 @export var max_hp    : int = 100
 @export var current_hp: int = 100
 
-# SETUP
-func _ready():
-	Signals.gain_hp.connect(_on_gain_hp)
+# HUD
+@onready var HUD: Control = $"../HUD/UI"
 
 # MAIN LOOP
 func _physics_process(delta: float) -> void:
@@ -97,9 +95,14 @@ func play_animation():
 			current_speed = crouch_speed # slower when crouched
 			sprite.play("crouch_walk")
 		
-func _on_gain_hp():
-	var total_hp = current_hp + 10
-	if total_hp > max_hp:
+func heal(hp_amount: int):
+	# update player's HP
+	var total_hp = current_hp + hp_amount # temporary total
+	if total_hp > max_hp: # nothing happens if HP already full
 		current_hp = max_hp
 	else:
-		current_hp = total_hp
+		current_hp = total_hp # update HP if not full yet
+	
+	# update HUD
+	HUD.update_label()
+	

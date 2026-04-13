@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d01e842njvx6m"]
 
 [ext_resource type="Script" uid="uid://b07ky7u62v50v" path="res://scripts/apple_heap.gd" id="1_ke1g6"]
-[ext_resource type="Texture2D" uid="uid://csu5rwr0cf432" path="res://assets/GandalfHardcore FREE Platformer Assets/Decor.png" id="1_qa3wd"]
+[ext_resource type="Texture2D" uid="uid://csu5rwr0cf432" path="res://assets/world/Decor.png" id="1_qa3wd"]
 
 [node name="AppleHeap" type="Area2D"]
 z_index = 2

@@ -1,12 +1,12 @@
 [gd_scene load_steps=44 format=3 uid="uid://bpb1so4cctbl5"]
 
-[ext_resource type="Texture2D" uid="uid://b2glx3qubfb4h" path="res://assets/Colour1/Outline/120x80_PNGSheets/_Idle.png" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://b2glx3qubfb4h" path="res://assets/knight/Outline/120x80_PNGSheets/_Idle.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bywhmbhaigqyu" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://kmw8u0gcqael" path="res://assets/Colour1/Outline/120x80_PNGSheets/_Fall.png" id="2_dqkch"]
-[ext_resource type="Texture2D" uid="uid://x3r1ixs6owmj" path="res://assets/Colour1/Outline/120x80_PNGSheets/_Crouch.png" id="2_tuyoq"]
-[ext_resource type="Texture2D" uid="uid://cu36grdj8ru3g" path="res://assets/Colour1/Outline/120x80_PNGSheets/_CrouchWalk.png" id="3_fjrip"]
-[ext_resource type="Texture2D" uid="uid://c8nxjp1qd01sl" path="res://assets/Colour1/Outline/120x80_PNGSheets/_Run.png" id="4_qlg0r"]
-[ext_resource type="Texture2D" uid="uid://cga0nyqneypil" path="res://assets/Colour1/Outline/120x80_PNGSheets/_Jump.png" id="4_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://kmw8u0gcqael" path="res://assets/knight/Outline/120x80_PNGSheets/_Fall.png" id="2_dqkch"]
+[ext_resource type="Texture2D" uid="uid://x3r1ixs6owmj" path="res://assets/knight/Outline/120x80_PNGSheets/_Crouch.png" id="2_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://cu36grdj8ru3g" path="res://assets/knight/Outline/120x80_PNGSheets/_CrouchWalk.png" id="3_fjrip"]
+[ext_resource type="Texture2D" uid="uid://c8nxjp1qd01sl" path="res://assets/knight/Outline/120x80_PNGSheets/_Run.png" id="4_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://cga0nyqneypil" path="res://assets/knight/Outline/120x80_PNGSheets/_Jump.png" id="4_tuyoq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pf23h"]
 atlas = ExtResource("2_tuyoq")

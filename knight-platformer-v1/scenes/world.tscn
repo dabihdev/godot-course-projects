@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://xrqr3m160x1r"]
+[gd_scene load_steps=15 format=3 uid="uid://xrqr3m160x1r"]
 
 [ext_resource type="Texture2D" uid="uid://wcoyhai15upn" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 1.png" id="1_71j4m"]
 [ext_resource type="PackedScene" uid="uid://bpb1so4cctbl5" path="res://scenes/player.tscn" id="1_nnsk1"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://82788yccr3bb" path="res://scenes/goddess_statue.tscn" id="6_i7141"]
 [ext_resource type="PackedScene" uid="uid://8eigb81i1h3n" path="res://scenes/platform.tscn" id="7_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://d01e842njvx6m" path="res://scenes/apple_heap.tscn" id="8_7r4gi"]
+[ext_resource type="PackedScene" uid="uid://71bswlf0ye5w" path="res://scenes/magic_box.tscn" id="10_w7kh3"]
 
 [sub_resource type="Animation" id="Animation_7r4gi"]
 length = 2.0
@@ -158,3 +159,6 @@ position = Vector2(680, 705)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 position = Vector2(3, -1)
 shape = SubResource("WorldBoundaryShape2D_rwgxs")
+
+[node name="MagicBox" parent="." instance=ExtResource("10_w7kh3")]
+position = Vector2(588, 504)

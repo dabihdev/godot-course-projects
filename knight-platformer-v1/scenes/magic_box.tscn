@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://71bswlf0ye5w"]
+
+[ext_resource type="Script" uid="uid://bcwnkv788dj3q" path="res://scripts/magic_box.gd" id="1_0toly"]
+[ext_resource type="Texture2D" uid="uid://tdyd20plx6bd" path="res://assets/GandalfHardcore FREE Platformer Assets/hot air balloon.png" id="2_128hw"]
+
+[sub_resource type="Animation" id="Animation_e1okv"]
+resource_name = "exit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(19.5, 19.5), Vector2(19.5, -20)]
+}
+
+[sub_resource type="Animation" id="Animation_5p312"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(19.5, 19.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f6nrv"]
+_data = {
+&"RESET": SubResource("Animation_5p312"),
+&"exit": SubResource("Animation_e1okv")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjy1b"]
+size = Vector2(40.25, 38.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0toly"]
+size = Vector2(40.25, 7.25)
+
+[node name="MagicBox" type="StaticBody2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_0toly")
+
+[node name="Balloon" type="Sprite2D" parent="."]
+position = Vector2(19.5, 19.5)
+texture = ExtResource("2_128hw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Balloon"]
+libraries = {
+&"": SubResource("AnimationLibrary_f6nrv")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.315081, 0.769936, 0.283448, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20.375, 19.125)
+shape = SubResource("RectangleShape2D_bjy1b")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(20.125, 41.875)
+shape = SubResource("RectangleShape2D_0toly")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

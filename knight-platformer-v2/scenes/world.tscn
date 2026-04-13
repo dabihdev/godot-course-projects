@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=4 uid="uid://xrqr3m160x1r"]
 
-[ext_resource type="Texture2D" uid="uid://wcoyhai15upn" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 1.png" id="1_71j4m"]
+[ext_resource type="Texture2D" uid="uid://wcoyhai15upn" path="res://assets/world/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 1.png" id="1_71j4m"]
 [ext_resource type="Script" uid="uid://cv6aeqqm60eid" path="res://scripts/ui.gd" id="1_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://bpb1so4cctbl5" path="res://scenes/player.tscn" id="1_nnsk1"]
-[ext_resource type="Texture2D" uid="uid://dbncn2xrfh5v5" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 5.png" id="1_rwgxs"]
-[ext_resource type="Texture2D" uid="uid://dmfjvypxp8gfv" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 2.png" id="2_qfnet"]
-[ext_resource type="Texture2D" uid="uid://14k6ellng45s" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 3.png" id="3_i7141"]
-[ext_resource type="Texture2D" uid="uid://dwdtdsh4jvy76" path="res://assets/GandalfHardcore FREE Platformer Assets/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 4.png" id="4_4mrxx"]
-[ext_resource type="Texture2D" uid="uid://biqeomj36yalg" path="res://assets/GandalfHardcore FREE Platformer Assets/Floor Tiles1.png" id="6_i7141"]
-[ext_resource type="Texture2D" uid="uid://bkmuf66wtlv3n" path="res://assets/GandalfHardcore FREE Platformer Assets/Tree3.png" id="7_7r4gi"]
+[ext_resource type="Texture2D" uid="uid://dbncn2xrfh5v5" path="res://assets/world/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 5.png" id="1_rwgxs"]
+[ext_resource type="Texture2D" uid="uid://dmfjvypxp8gfv" path="res://assets/world/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 2.png" id="2_qfnet"]
+[ext_resource type="Texture2D" uid="uid://14k6ellng45s" path="res://assets/world/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 3.png" id="3_i7141"]
+[ext_resource type="Texture2D" uid="uid://dwdtdsh4jvy76" path="res://assets/world/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 4.png" id="4_4mrxx"]
+[ext_resource type="Texture2D" uid="uid://biqeomj36yalg" path="res://assets/world/Floor Tiles1.png" id="6_i7141"]
+[ext_resource type="Texture2D" uid="uid://bkmuf66wtlv3n" path="res://assets/world/Tree3.png" id="7_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://d01e842njvx6m" path="res://scenes/apple_heap.tscn" id="8_w7kh3"]
 [ext_resource type="PackedScene" uid="uid://82788yccr3bb" path="res://scenes/goddess_statue.tscn" id="9_w7kh3"]
 
@@ -597,6 +597,7 @@ anchors_preset = 0
 offset_right = 2001.0
 offset_bottom = 923.0
 script = ExtResource("1_e3hyu")
+metadata/_edit_use_anchors_ = true
 
 [node name="HP" type="Label" parent="HUD/UI"]
 layout_mode = 0
