@@ -290,9 +290,8 @@ current_hp = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3v2ag")
-animation = &"fall"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.259353
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 21.5)

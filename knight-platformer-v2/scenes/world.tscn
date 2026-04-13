@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://xrqr3m160x1r"]
+[gd_scene load_steps=15 format=4 uid="uid://xrqr3m160x1r"]
 
 [ext_resource type="Texture2D" uid="uid://wcoyhai15upn" path="res://assets/world/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 1.png" id="1_71j4m"]
 [ext_resource type="Script" uid="uid://cv6aeqqm60eid" path="res://scripts/ui.gd" id="1_e3hyu"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bkmuf66wtlv3n" path="res://assets/world/Tree3.png" id="7_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://d01e842njvx6m" path="res://scenes/apple_heap.tscn" id="8_w7kh3"]
 [ext_resource type="PackedScene" uid="uid://82788yccr3bb" path="res://scenes/goddess_statue.tscn" id="9_w7kh3"]
+[ext_resource type="PackedScene" uid="uid://blb260y4mt8gc" path="res://scenes/aggressive_mushroom.tscn" id="12_q5onr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mrxx"]
 texture = ExtResource("6_i7141")
@@ -687,7 +688,7 @@ position = Vector2(3000, 733)
 
 [node name="Player" parent="." instance=ExtResource("1_nnsk1")]
 z_index = 1
-position = Vector2(3213, 584)
+position = Vector2(2894, 607)
 
 [node name="GoddessStatue" parent="." instance=ExtResource("9_w7kh3")]
 position = Vector2(1642, 644)
@@ -696,3 +697,7 @@ valiant knight.
 I am Vanth,
 the Winged Goddess.
 Be careful of enemies!"
+
+[node name="AggressiveMushroom" parent="." instance=ExtResource("12_q5onr")]
+position = Vector2(3551, 637)
+max_hp = 30

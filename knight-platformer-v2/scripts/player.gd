@@ -23,6 +23,7 @@ var current_state = States.IDLE
 # Player's stats
 @export var max_hp    : int = 100
 @export var current_hp: int = 100
+@export var attack    : int = 10
 
 # HUD
 @onready var HUD: Control = $"../HUD/UI"
@@ -42,9 +43,10 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
 		# change facing direction based on direction
-		if direction < 0: sprite.flip_h = true
-		else: sprite.flip_h = false
-		
+		if direction < 0:
+			sprite.flip_h = true
+		else:
+			sprite.flip_h = false
 		# update horizontal velocity
 		velocity.x = direction * current_speed
 	else:
@@ -106,3 +108,13 @@ func heal(hp_amount: int):
 	# update HUD
 	HUD.update_label()
 	
+func take_damage(damage_amount: int):
+	# update player's HP
+	var total_hp = current_hp - damage_amount # temporary total
+	if total_hp < 0:
+		current_hp = 0
+	else:
+		current_hp = total_hp
+	
+	# update HUD
+	HUD.update_label()
