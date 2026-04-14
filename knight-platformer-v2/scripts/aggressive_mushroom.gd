@@ -5,6 +5,14 @@ extends CharacterBody2D
 var current_hp: int
 @export var attack: int = 10
 
+# states
+enum States {
+	IDLE,
+	RUN,
+	DEAD
+}
+var current_state = States.IDLE
+
 func _ready():
 	current_hp = max_hp
 	

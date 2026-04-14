@@ -5,4 +5,4 @@ extends Area2D
 @onready var character: CharacterBody2D = $".."
 
 func _on_body_entered(body: Node2D) -> void:
-	body.take_damage(character.attack)
+	body.take_damage(character.attack) 

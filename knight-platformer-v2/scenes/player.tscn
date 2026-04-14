@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bpb1so4cctbl5"]
+[gd_scene load_steps=50 format=3 uid="uid://bpb1so4cctbl5"]
 
 [ext_resource type="Texture2D" uid="uid://b2glx3qubfb4h" path="res://assets/knight/Outline/120x80_PNGSheets/_Idle.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bywhmbhaigqyu" path="res://scripts/player.gd" id="1_g2els"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cu36grdj8ru3g" path="res://assets/knight/Outline/120x80_PNGSheets/_CrouchWalk.png" id="3_fjrip"]
 [ext_resource type="Texture2D" uid="uid://c8nxjp1qd01sl" path="res://assets/knight/Outline/120x80_PNGSheets/_Run.png" id="4_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://cga0nyqneypil" path="res://assets/knight/Outline/120x80_PNGSheets/_Jump.png" id="4_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://bm6uobio6eunp" path="res://assets/knight/Outline/120x80_PNGSheets/_DeathNoMovement.png" id="5_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://nfo0f6t5efa6" path="res://assets/knight/Outline/120x80_PNGSheets/_CrouchTransition.png" id="6_y4r1p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pf23h"]
 atlas = ExtResource("2_tuyoq")
@@ -51,6 +53,22 @@ region = Rect2(120, 0, 120, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
 atlas = ExtResource("2_dqkch")
 region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt7fs"]
+atlas = ExtResource("5_ur7pv")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hax0n"]
+atlas = ExtResource("5_ur7pv")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dvfe"]
+atlas = ExtResource("2_tuyoq")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_giy8y"]
+atlas = ExtResource("6_y4r1p")
+region = Rect2(0, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -196,6 +214,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_dt7fs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hax0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dvfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giy8y")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_g2els")
 }, {
 "duration": 1.0,
@@ -290,8 +325,10 @@ current_hp = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3v2ag")
-animation = &"idle"
+animation = &"hurt"
 autoplay = "idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 21.5)
