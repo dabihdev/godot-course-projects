@@ -9,6 +9,9 @@ extends CharacterBody2D
 @export var crouch_speed = 100.0
 var current_speed = max_speed
 
+# flags
+var is_stun = false
+
 # player's state
 enum States {
 	IDLE,
@@ -82,7 +85,15 @@ func update_state():
 	else:
 		current_state = States.IDLE
 
-func play_animation():	
+func play_animation():
+	# handle stun animation (HitStop)
+	if is_stun:
+		sprite.play("stun")
+		await sprite.animation_finished
+		is_stun = false
+		return
+	
+	# match main states to their animations		
 	current_speed = max_speed # reset speed to maximum
 	match current_state:
 		States.IDLE:
@@ -112,7 +123,8 @@ func heal(hp_amount: int):
 	# update HUD
 	HUD.update_label()
 	
-func take_damage(damage_amount: int):		
+func take_damage(damage_amount: int):
+	is_stun = true	
 	# update player's HP
 	var total_hp = current_hp - damage_amount # temporary total
 	if total_hp < 0:
