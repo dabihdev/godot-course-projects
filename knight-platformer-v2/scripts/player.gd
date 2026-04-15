@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 # preloaded objects
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 # player speeds
 @export var max_speed = 500.0
@@ -10,7 +11,7 @@ extends CharacterBody2D
 var current_speed = max_speed
 
 # flags
-var is_stun = false
+var is_stun : bool = false
 
 # player's state
 enum States {
@@ -19,7 +20,7 @@ enum States {
 	JUMP,
 	FALL,
 	CROUCH,
-	CROUCH_WALK
+	CROUCH_WALK,
 }
 var current_state = States.IDLE
 
@@ -28,9 +29,19 @@ var current_state = States.IDLE
 @export var current_hp: int = 100
 @export var attack    : int = 10
 
+# Player's collision shapes
+var default_shape = Rect2(-4.0, 21.5, 15.0, 37.0)
+var crouch_shape = Rect2(-4.0, 26.75, 15.0, 26.5)
+
 # HUD
 @onready var HUD: Control = $"../HUD/UI"
 
+# SETUP PLAYER
+func _ready():
+	collision_shape.shape.size = default_shape.size
+	collision_shape.position = default_shape.position
+	print("Ready")
+	
 # MAIN LOOP
 func _physics_process(delta: float) -> void:
 	# update state
@@ -43,6 +54,18 @@ func _physics_process(delta: float) -> void:
 	play_animation()
 
 	move_and_slide()
+
+func handle_state_changes():
+	if current_state == States.CROUCH or current_state == States.CROUCH_WALK:
+		# change collision shape
+		collision_shape.shape.size = crouch_shape.size
+		collision_shape.position = crouch_shape.position
+		# change speed
+		current_speed = crouch_speed
+	else: # revert back to default shape and speed
+		collision_shape.shape.size = default_shape.size
+		collision_shape.position = default_shape.position
+		current_speed = max_speed
 
 func handle_movement(delta):	
 	# 1. gravity.
@@ -67,6 +90,9 @@ func handle_movement(delta):
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 
 func update_state():
+	# keep track of the previous state
+	var previous_state = current_state
+	
 	# guard clause: fall if not on floor
 	if not is_on_floor():
 		current_state = States.FALL
@@ -84,6 +110,9 @@ func update_state():
 		current_state = States.RUN
 	else:
 		current_state = States.IDLE
+		
+	if current_state != previous_state:
+		handle_state_changes()
 
 func play_animation():
 	# handle stun animation (HitStop)
@@ -91,10 +120,8 @@ func play_animation():
 		sprite.play("stun")
 		await sprite.animation_finished
 		is_stun = false
-		return
 	
 	# match main states to their animations		
-	current_speed = max_speed # reset speed to maximum
 	match current_state:
 		States.IDLE:
 			sprite.play("idle")
@@ -105,10 +132,8 @@ func play_animation():
 		States.FALL:
 			sprite.play("fall")
 		States.CROUCH:
-			current_speed = crouch_speed # slower when crouched
 			sprite.play("crouch")
 		States.CROUCH_WALK:
-			current_speed = crouch_speed # slower when crouched
 			sprite.play("crouch_walk")
 			
 		
