@@ -686,11 +686,28 @@ tile_set = SubResource("TileSet_7r4gi")
 [node name="AppleHeap" parent="Foreground/Terrain" instance=ExtResource("8_w7kh3")]
 position = Vector2(3000, 733)
 
-[node name="Player" parent="." instance=ExtResource("1_nnsk1")]
-z_index = 1
-position = Vector2(2894, 607)
+[node name="Enemies" type="Node2D" parent="Foreground"]
 
-[node name="GoddessStatue" parent="." instance=ExtResource("9_w7kh3")]
+[node name="AggressiveMushroom" parent="Foreground/Enemies" instance=ExtResource("12_q5onr")]
+position = Vector2(3554, 640)
+max_hp = 30
+
+[node name="AggressiveMushroom2" parent="Foreground/Enemies" instance=ExtResource("12_q5onr")]
+position = Vector2(3898, 641)
+
+[node name="AggressiveMushroom3" parent="Foreground/Enemies" instance=ExtResource("12_q5onr")]
+position = Vector2(1984, 640)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="AggressiveMushroom4" parent="Foreground/Enemies" instance=ExtResource("12_q5onr")]
+position = Vector2(935, 639)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Statues" type="Node2D" parent="Foreground"]
+
+[node name="GoddessStatue" parent="Foreground/Statues" instance=ExtResource("9_w7kh3")]
 position = Vector2(1642, 644)
 message = "Welcome to the Forests of Autumn,
 valiant knight.
@@ -698,6 +715,6 @@ I am Vanth,
 the Winged Goddess.
 Be careful of enemies!"
 
-[node name="AggressiveMushroom" parent="." instance=ExtResource("12_q5onr")]
-position = Vector2(3551, 637)
-max_hp = 30
+[node name="Player" parent="." instance=ExtResource("1_nnsk1")]
+z_index = 1
+position = Vector2(2416, 609)

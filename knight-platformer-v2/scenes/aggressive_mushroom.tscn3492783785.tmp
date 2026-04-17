@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://blb260y4mt8gc"]
+[gd_scene load_steps=54 format=3 uid="uid://blb260y4mt8gc"]
 
 [ext_resource type="Texture2D" uid="uid://0henynya7ow1" path="res://assets/monsters/Mushroom/Mushroom with VFX/Mushroom-Attack.png" id="1_17p88"]
 [ext_resource type="Script" uid="uid://cx3sb80llf0mg" path="res://scripts/aggressive_mushroom.gd" id="1_i5db4"]
@@ -326,6 +326,9 @@ size = Vector2(20, 87.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5db4"]
 size = Vector2(27.5, 30.25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w36cs"]
+size = Vector2(1029, 191)
+
 [node name="AggressiveMushroom" type="CharacterBody2D"]
 script = ExtResource("1_i5db4")
 
@@ -362,10 +365,15 @@ position = Vector2(0, 6.875)
 shape = SubResource("RectangleShape2D_i5db4")
 one_way_collision = true
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(1, 68)
-target_position = Vector2(-774, 0)
+[node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(25.5, 34.5)
+shape = SubResource("RectangleShape2D_w36cs")
 
 [connection signal="body_entered" from="HitBox" to="HitBox" method="_on_body_entered"]
 [connection signal="body_entered" from="HurtBox" to="HurtBox" method="_on_body_entered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_body_detected"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_body_escaped"]

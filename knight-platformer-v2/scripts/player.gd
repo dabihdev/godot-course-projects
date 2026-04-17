@@ -40,7 +40,6 @@ var crouch_shape = Rect2(-4.0, 26.75, 15.0, 26.5)
 func _ready():
 	collision_shape.shape.size = default_shape.size
 	collision_shape.position = default_shape.position
-	print("Ready")
 	
 # MAIN LOOP
 func _physics_process(delta: float) -> void:
@@ -110,7 +109,8 @@ func update_state():
 		current_state = States.RUN
 	else:
 		current_state = States.IDLE
-		
+	
+	# handle player's modification when status changes	
 	if current_state != previous_state:
 		handle_state_changes()
 
