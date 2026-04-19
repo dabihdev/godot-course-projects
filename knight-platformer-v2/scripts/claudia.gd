@@ -8,12 +8,12 @@ var current_hp: int
 
 # target
 var target: CharacterBody2D
-
+var is_attacking = false
 # states
 enum States {
 	IDLE,
 	RUN,
-	STUN,
+	ATTACK,
 	DEAD
 }
 var current_state = States.IDLE
@@ -35,11 +35,14 @@ func _physics_process(delta: float) -> void:
 	
 func detect_player():
 	if current_state == States.DEAD:
-			return
+		return
 						
 	if $RayCast2D.is_colliding():
-		current_state = States.RUN
+		current_state = States.ATTACK
 		target = $RayCast2D.get_collider()
+		is_attacking=true
+		print("Target detected")
+
 
 func handle_movement(delta):
 	# vertical
@@ -52,14 +55,14 @@ func handle_movement(delta):
 		global_position = global_position.move_toward(target.global_position, speed*delta)
 	else: # smooth stopping
 		velocity.x = move_toward(velocity.x, 0, speed)
-		
+	
+	if is_attacking:
+		$Sword/AnimationPlayer.play("attack")
+		await $Sword/AnimationPlayer.animation_finished
+		is_attacking=false
+		print("attacking")
 	
 func play_animation():
-	# handle stun animation (HitStop)
-	if is_stun:
-		$AnimatedSprite2D.play("stun")
-		await $AnimatedSprite2D.animation_finished
-		is_stun = false
 	
 	# match main states to their animations		
 	match current_state:
@@ -81,10 +84,9 @@ func dies():
 	# update state
 	current_state = States.DEAD
 	# delete hit and hurtbox
-	$HitBox.queue_free()
-	$HurtBox.queue_free()
+	$Sword.queue_free()
 	# play death animation
-	$AnimatedSprite2D.play("die")
+	$AnimatedSprite2D.play("dead")
 	# remove collision shapes
 	$CollisionShape2D.queue_free()
 	$RayCast2D.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://xrqr3m160x1r"]
+[gd_scene load_steps=15 format=4 uid="uid://xrqr3m160x1r"]
 
 [ext_resource type="Texture2D" uid="uid://wcoyhai15upn" path="res://assets/world/GandalfHardcore Background layers/Autumn BG/GandalfHardcore Background layers_layer 1.png" id="1_71j4m"]
 [ext_resource type="Script" uid="uid://cv6aeqqm60eid" path="res://scripts/ui.gd" id="1_e3hyu"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://bkmuf66wtlv3n" path="res://assets/world/Tree3.png" id="7_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://d01e842njvx6m" path="res://scenes/apple_heap.tscn" id="8_w7kh3"]
 [ext_resource type="PackedScene" uid="uid://82788yccr3bb" path="res://scenes/goddess_statue.tscn" id="9_w7kh3"]
-[ext_resource type="PackedScene" uid="uid://umhbo5aap5xy" path="res://scenes/claudia.tscn" id="11_jhx03"]
 [ext_resource type="PackedScene" uid="uid://blb260y4mt8gc" path="res://scenes/aggressive_mushroom.tscn" id="12_q5onr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mrxx"]
@@ -696,8 +695,15 @@ max_hp = 30
 [node name="AggressiveMushroom2" parent="Foreground/Enemies" instance=ExtResource("12_q5onr")]
 position = Vector2(3898, 641)
 
-[node name="Claudia" parent="Foreground/Enemies" instance=ExtResource("11_jhx03")]
-position = Vector2(969, 657)
+[node name="AggressiveMushroom3" parent="Foreground/Enemies" instance=ExtResource("12_q5onr")]
+position = Vector2(1984, 640)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="AggressiveMushroom4" parent="Foreground/Enemies" instance=ExtResource("12_q5onr")]
+position = Vector2(935, 639)
+rotation = -3.14159
+scale = Vector2(1, -1)
 
 [node name="Statues" type="Node2D" parent="Foreground"]
 
@@ -711,4 +717,4 @@ Be careful of enemies!"
 
 [node name="Player" parent="." instance=ExtResource("1_nnsk1")]
 z_index = 1
-position = Vector2(730, 609)
+position = Vector2(2416, 609)
