@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cps3m7078j7ua"]
+
+[ext_resource type="PackedScene" uid="uid://00lumo51inkt" path="res://scenes/player.tscn" id="1_nnsk1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e5uuo"]
+distance = -644.0
+
+[node name="World" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_e5uuo")
+
+[node name="Player" parent="." instance=ExtResource("1_nnsk1")]
+position = Vector2(344, 465)
