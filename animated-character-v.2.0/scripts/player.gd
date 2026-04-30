@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
-
+# Speeds
 @export var max_speed = 500.0
 @export var jump_speed = -500.0
 var crouch_speed = max_speed/3
 var current_speed = max_speed
 
+# States
 enum States {
 	IDLE,
 	RUN,
@@ -16,12 +17,11 @@ enum States {
 	HIT,
 	DEAD
 }
-
 var current_state = States.IDLE : set = set_state
 var facing_direction = "right"
 
+# Accessed Nodes
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
 
 # MAIN LOOP
 func _physics_process(delta: float) -> void:
@@ -69,65 +69,63 @@ func _physics_process(delta: float) -> void:
 		
 		velocity.x = direction * current_speed
 		
-		# Flip direction
-		if direction > 0: facing_direction = "right"
+		# Track if direction changed
+		var old_direction = facing_direction
+		if direction > 0 : facing_direction = "right"
 		else: facing_direction = "left"
+		
+		# If direction changed while in the same state, manually update animation
+		if old_direction != facing_direction:
+			update_animation()
 	else:
 		velocity.x = move_toward(velocity.x, 0, current_speed)
-	
+		
 	move_and_slide()
 
 # SETTER FUNCTION: fired every time the current state changes
 # Handles logic and animation changes whenever the state changes
 func set_state(new_state):
-	# Update the value (necessary when using a setter)
-	var previous_state = current_state
+	if current_state == new_state:
+		return
+		
 	current_state = new_state
 	
-	# Check if state has a different value
-	# if not stop it here to avoid useless repetition
-	if previous_state == current_state:
-		return
-	
-	# Reset speed to maximum
+	# Reset speed to maximum (default)
 	current_speed = max_speed
 	
+	# Handle specific physics changes on state entry
+	match current_state:
+		States.JUMP:
+			velocity.y = jump_speed
+		States.CROUCH, States.CROUCH_WALK:
+			current_speed = crouch_speed
+		States.HIT, States.DEAD:
+			velocity.x = 0
+			
+
+	# Now that physics are set, update the visuals
+	update_animation()
+
+func update_animation():
 	var state_name = ""
 	
 	match current_state:
-		States.IDLE:
-			state_name = "idle"
-		States.RUN:
-			state_name = "run"
-		States.JUMP:
-			state_name = "jump"
-			velocity.y = jump_speed
-		States.FALL:
-			state_name = "fall"
-		States.CROUCH:
-			state_name = "crouch"
-			current_speed = crouch_speed
-		States.CROUCH_WALK:
-			state_name = "crouch_walk"
-			current_speed = crouch_speed
-		States.HIT:
-			state_name = "hit"
-			velocity.x = 0
-			current_speed = 0
-		States.DEAD:
-			state_name = "die"
-			collision_layer = 0
-			collision_mask = 0
-			velocity.x = 0
-			current_speed = 0
+		States.IDLE: state_name = "idle"
+		States.RUN: state_name = "run"
+		States.JUMP: state_name = "jump"
+		States.FALL: state_name = "fall"
+		States.CROUCH: state_name = "crouch"
+		States.CROUCH_WALK: state_name = "crouch_walk"
+		States.HIT: state_name = "hit"
+		States.DEAD: state_name = "die"
 
-	# Combine the state name with the direction
 	var animation_to_play = state_name + "_" + facing_direction
 	
-	# Play the animation if it exists in the AnimationPlayer
 	if animation_player.has_animation(animation_to_play):
+		# We use 'play()' - it won't restart the animation if it's already playing
+		# unless you tell it to, which is perfect for direction flipping.
 		animation_player.play(animation_to_play)
-		
+
 func dies():
 	# set state
 	current_state = States.DEAD
