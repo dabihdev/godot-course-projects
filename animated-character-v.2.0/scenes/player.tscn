@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://00lumo51inkt"]
+[gd_scene load_steps=79 format=3 uid="uid://00lumo51inkt"]
 
 [ext_resource type="Script" uid="uid://bu08n0a226gwd" path="res://scripts/player.gd" id="1_dqkch"]
 [ext_resource type="Texture2D" uid="uid://kmw8u0gcqael" path="res://assets/knight/_Fall.png" id="1_qhqgy"]
@@ -12,10 +12,6 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
 atlas = ExtResource("2_fjrip")
-region = Rect2(0, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ni07"]
-atlas = ExtResource("3_smehm")
 region = Rect2(0, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l71n6"]
@@ -214,9 +210,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4ni07")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l71n6")
 }, {
@@ -829,7 +822,6 @@ tracks/5/keys = {
 [sub_resource type="Animation" id="Animation_holxr"]
 resource_name = "die_left"
 length = 0.90001
-loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -931,7 +923,6 @@ tracks/7/keys = {
 [sub_resource type="Animation" id="Animation_g5jhy"]
 resource_name = "die_right"
 length = 0.90001
-loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1177,7 +1168,6 @@ tracks/5/keys = {
 [sub_resource type="Animation" id="Animation_60mlk"]
 resource_name = "hit_left"
 length = 0.90001
-loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1246,16 +1236,27 @@ tracks/5/path = NodePath("AnimatedSprite2D:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.104083, 0.19984),
+"times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.964706, 0.258824, 0.415686, 1), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimatedSprite2D:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hit"]
 }
 
 [sub_resource type="Animation" id="Animation_giy8y"]
 resource_name = "hit_right"
 length = 0.90001
-loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1324,10 +1325,22 @@ tracks/5/path = NodePath("AnimatedSprite2D:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.104083, 0.19984),
+"times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.964706, 0.258824, 0.415686, 1), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimatedSprite2D:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hit"]
 }
 
 [sub_resource type="Animation" id="Animation_y4r1p"]
@@ -1864,5 +1877,6 @@ shape = SubResource("CapsuleShape2D_ur7pv")
 disabled = true
 
 [node name="HitCoolDown" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="HitCoolDown" to="." method="_on_hit_cool_down_timeout"]

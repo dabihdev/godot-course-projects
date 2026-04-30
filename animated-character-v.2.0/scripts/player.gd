@@ -6,6 +6,10 @@ extends CharacterBody2D
 var crouch_speed = max_speed/3
 var current_speed = max_speed
 
+# HP
+@export var max_hp = 100
+var current_hp = max_hp
+
 # States
 enum States {
 	IDLE,
@@ -22,6 +26,7 @@ var facing_direction = "right"
 
 # Accessed Nodes
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var hit_cool_down: Timer = $HitCoolDown
 
 # MAIN LOOP
 func _physics_process(delta: float) -> void:
@@ -100,9 +105,8 @@ func set_state(new_state):
 		States.CROUCH, States.CROUCH_WALK:
 			current_speed = crouch_speed
 		States.HIT, States.DEAD:
-			velocity.x = 0
+			velocity.x = 0	
 			
-
 	# Now that physics are set, update the visuals
 	update_animation()
 
@@ -121,14 +125,26 @@ func update_animation():
 
 	var animation_to_play = state_name + "_" + facing_direction
 	
-	if animation_player.has_animation(animation_to_play):
-		# We use 'play()' - it won't restart the animation if it's already playing
-		# unless you tell it to, which is perfect for direction flipping.
+	
+	if animation_player.has_animation(animation_to_play):		
+		# play the new animation
 		animation_player.play(animation_to_play)
 
-func dies():
-	# set state
+func take_damage(hp_amount: int):
+	print("HERE")
+	# if HP goes to 0, die
+	if hp_amount >= current_hp:
+		current_hp = 0
+		die()
+		return
+	
+	# else take the hit
+	current_hp -= hp_amount
+	hit_cool_down.start()
+	current_state = States.HIT
+	
+func die():
 	current_state = States.DEAD
 	
-	
-	
+func _on_hit_cool_down_timeout() -> void:
+	current_state = States.IDLE

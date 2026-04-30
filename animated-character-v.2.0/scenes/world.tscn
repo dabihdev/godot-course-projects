@@ -29,4 +29,9 @@ script = ExtResource("2_rwgxs")
 position = Vector2(655, 242)
 shape = SubResource("RectangleShape2D_4wyf3")
 
+[node name="CoolDown" type="Timer" parent="HitBox"]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="body_entered" from="HitBox" to="HitBox" method="_on_body_entered"]
+[connection signal="timeout" from="HitBox/CoolDown" to="HitBox" method="_on_cool_down_timeout"]
