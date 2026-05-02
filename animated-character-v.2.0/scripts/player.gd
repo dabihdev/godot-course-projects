@@ -18,6 +18,7 @@ enum States {
 	FALL,
 	CROUCH,
 	CROUCH_WALK,
+	ATTACK,
 	HIT,
 	DEAD
 }
@@ -27,6 +28,7 @@ var facing_direction = "right"
 # Accessed Nodes
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hit_cool_down: Timer = $HitCoolDown
+@onready var attack_cool_down: Timer = $AttackCoolDown
 
 # MAIN LOOP
 func _physics_process(delta: float) -> void:
@@ -45,6 +47,10 @@ func _physics_process(delta: float) -> void:
 			velocity += get_gravity() * delta
 		move_and_slide()
 		return # EXIT THE FUNCTION HERE
+		
+	# ATTACK LOCK
+	if current_state == States.ATTACK:
+		return # STOP FURTHER PHYSICS FROM HAPPENING
 
 	# GRAVITY (Only happens if alive)
 	if not is_on_floor():
@@ -60,7 +66,7 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_pressed("crouch"):
 			current_state = States.CROUCH
 		elif Input.is_action_just_pressed("attack"):
-			current_state = States.HIT
+			current_state = States.ATTACK
 		elif Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"):
 			current_state = States.RUN
 		else:
@@ -104,8 +110,11 @@ func set_state(new_state):
 			velocity.y = jump_speed
 		States.CROUCH, States.CROUCH_WALK:
 			current_speed = crouch_speed
+		States.ATTACK:
+			velocity.x = 0
+			attack_cool_down.start() # start timer
 		States.HIT, States.DEAD:
-			velocity.x = 0	
+			velocity.x = 0
 			
 	# Now that physics are set, update the visuals
 	update_animation()
@@ -120,6 +129,7 @@ func update_animation():
 		States.FALL: state_name = "fall"
 		States.CROUCH: state_name = "crouch"
 		States.CROUCH_WALK: state_name = "crouch_walk"
+		States.ATTACK: state_name = "attack"
 		States.HIT: state_name = "hit"
 		States.DEAD: state_name = "die"
 
@@ -147,4 +157,7 @@ func die():
 	current_state = States.DEAD
 	
 func _on_hit_cool_down_timeout() -> void:
+	current_state = States.IDLE
+
+func _on_attack_cool_down_timeout() -> void:
 	current_state = States.IDLE
