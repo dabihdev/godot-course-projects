@@ -19,6 +19,7 @@ enum States {
 	CROUCH,
 	CROUCH_WALK,
 	ATTACK,
+	CROUCH_ATTACK,
 	HIT,
 	DEAD
 }
@@ -51,6 +52,9 @@ func _physics_process(delta: float) -> void:
 	# ATTACK LOCK
 	if current_state == States.ATTACK:
 		return # STOP FURTHER PHYSICS FROM HAPPENING
+	
+	if current_state == States.CROUCH_ATTACK:
+		return # STOP FURTHER PHYSICS FROM HAPPENING
 
 	# GRAVITY (Only happens if alive)
 	if not is_on_floor():
@@ -64,7 +68,11 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("jump"):
 			current_state = States.JUMP
 		elif Input.is_action_pressed("crouch"):
-			current_state = States.CROUCH
+			# handle attack while crouched
+			if Input.is_action_just_pressed("attack"):
+				current_state = States.CROUCH_ATTACK
+			else:
+				current_state = States.CROUCH
 		elif Input.is_action_just_pressed("attack"):
 			current_state = States.ATTACK
 		elif Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"):
@@ -110,7 +118,7 @@ func set_state(new_state):
 			velocity.y = jump_speed
 		States.CROUCH, States.CROUCH_WALK:
 			current_speed = crouch_speed
-		States.ATTACK:
+		States.ATTACK, States.CROUCH_ATTACK:
 			velocity.x = 0
 			attack_cool_down.start() # start timer
 		States.HIT, States.DEAD:
@@ -130,6 +138,7 @@ func update_animation():
 		States.CROUCH: state_name = "crouch"
 		States.CROUCH_WALK: state_name = "crouch_walk"
 		States.ATTACK: state_name = "attack"
+		States.CROUCH_ATTACK: state_name = "crouch_attack"
 		States.HIT: state_name = "hit"
 		States.DEAD: state_name = "die"
 
@@ -160,4 +169,7 @@ func _on_hit_cool_down_timeout() -> void:
 	current_state = States.IDLE
 
 func _on_attack_cool_down_timeout() -> void:
-	current_state = States.IDLE
+	if current_state == States.CROUCH_ATTACK:
+		current_state = States.CROUCH
+	else:
+		current_state = States.IDLE

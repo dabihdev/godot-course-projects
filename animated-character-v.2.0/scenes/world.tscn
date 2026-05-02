@@ -1,13 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cps3m7078j7ua"]
+[gd_scene load_steps=3 format=3 uid="uid://cps3m7078j7ua"]
 
 [ext_resource type="PackedScene" uid="uid://00lumo51inkt" path="res://scenes/player.tscn" id="1_nnsk1"]
-[ext_resource type="Script" uid="uid://celyctn0v2g4m" path="res://scripts/hit_box.gd" id="2_rwgxs"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e5uuo"]
 distance = -644.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wyf3"]
-size = Vector2(229.5, 178)
 
 [node name="World" type="Node2D"]
 
@@ -20,18 +16,3 @@ shape = SubResource("WorldBoundaryShape2D_e5uuo")
 [node name="Player" parent="." instance=ExtResource("1_nnsk1")]
 position = Vector2(319, 234)
 collision_layer = 3
-
-[node name="HitBox" type="Area2D" parent="."]
-collision_mask = 2
-script = ExtResource("2_rwgxs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(655, 242)
-shape = SubResource("RectangleShape2D_4wyf3")
-
-[node name="CoolDown" type="Timer" parent="HitBox"]
-wait_time = 2.0
-one_shot = true
-
-[connection signal="body_entered" from="HitBox" to="HitBox" method="_on_body_entered"]
-[connection signal="timeout" from="HitBox/CoolDown" to="HitBox" method="_on_cool_down_timeout"]
