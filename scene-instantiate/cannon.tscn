@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw5jp2d6gpy3x"]
+
+[ext_resource type="Script" uid="uid://cgy5kjj3js1jp" path="res://cannon.gd" id="1_23j6s"]
+[ext_resource type="Texture2D" uid="uid://cl75npnt8o1aq" path="res://icon.svg" id="1_i10un"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i10un"]
+size = Vector2(115, 118)
+
+[node name="Cannon" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_23j6s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_i10un")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i10un")

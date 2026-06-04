@@ -2450,6 +2450,10 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="CrouchAttackCoolDown" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
 [node name="HitBox" type="Area2D" parent="."]
 script = ExtResource("11_d2wvv")
 metadata/_custom_type_script = "uid://b5cx40m1xr8o8"
@@ -2461,3 +2465,4 @@ disabled = true
 
 [connection signal="timeout" from="HitCoolDown" to="." method="_on_hit_cool_down_timeout"]
 [connection signal="timeout" from="AttackCoolDown" to="." method="_on_attack_cool_down_timeout"]
+[connection signal="timeout" from="CrouchAttackCoolDown" to="." method="_on_crouch_attack_cool_down_timeout"]

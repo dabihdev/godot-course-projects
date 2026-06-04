@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddhrklo8uytr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e5uuo"]
+
+[sub_resource type="Sky" id="Sky_nnsk1"]
+sky_material = SubResource("ProceduralSkyMaterial_e5uuo")
+
+[sub_resource type="Environment" id="Environment_rwgxs"]
+background_mode = 2
+sky = SubResource("Sky_nnsk1")
+
+[node name="World" type="Node3D"]
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.483348, 0, 0, 0, 1, 3.75418, 0, -3.75134)
+use_collision = true
+size = Vector3(8.50836, 1, 8.50269)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999995, 0.00308922, 0, -0.00308922, 0.999995, 0, 0, 0, 1, 2.1645, 2.19236, 4.00252)
+fov = 83.3999
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rwgxs")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.656091, 0.222648, 0.721091, 0.342291, 0.93935, 0.0213975, -0.672593, 0.260861, -0.69251, 15.0033, 13.8235, 8.0359)
+
+[node name="Door" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.302723, 0.854001, -0.547482)
+size = Vector3(0.199219, 1.22852, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Door"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.207392, -0.387399, 0.0783845)
+operation = 2
+radius = 0.346191
+height = 0.62709
