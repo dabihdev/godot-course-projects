@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddhrklo8uytr"]
+[gd_scene load_steps=5 format=3 uid="uid://ddhrklo8uytr"]
+
+[ext_resource type="PackedScene" uid="uid://biq5svvdarmn3" path="res://scenes/player.tscn" id="1_nnsk1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e5uuo"]
 
@@ -16,10 +18,6 @@ transform = Transform3D(1, 0, 0, 0, 0.483348, 0, 0, 0, 1, 3.75418, 0, -3.75134)
 use_collision = true
 size = Vector3(8.50836, 1, 8.50269)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999995, 0.00308922, 0, -0.00308922, 0.999995, 0, 0, 0, 1, 2.1645, 2.19236, 4.00252)
-fov = 83.3999
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rwgxs")
 
@@ -28,10 +26,14 @@ transform = Transform3D(-0.656091, 0.222648, 0.721091, 0.342291, 0.93935, 0.0213
 
 [node name="Door" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.302723, 0.854001, -0.547482)
+use_collision = true
 size = Vector3(0.199219, 1.22852, 1)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Door"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.207392, -0.387399, 0.0783845)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.204946, -0.316687, -0.0218604)
 operation = 2
 radius = 0.346191
 height = 0.62709
+
+[node name="Player" parent="." instance=ExtResource("1_nnsk1")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1, -3)
