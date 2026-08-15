@@ -1,0 +1,59 @@
+This is just a template to give you a guideline on how your project should be structured.
+The main idea is to split your project in FEATURES.
+
+res://
+├── assets/                  # Raw visual and audio files
+│   ├── audio/
+│   │   ├── music/
+│   │   └── sfx/
+│   ├── fonts/
+│   ├── sprites/
+│   │   ├── player/
+│   │   ├── enemies/
+│   │   ├── environment/
+│   │   └── ui/
+│   └── tilemaps/
+│
+├── src/                     # All game logic, scenes, and scripts
+│   ├── autoload/            # Global singletons (managers)
+│   │   ├── game_events.gd
+│   │   ├── save_manager.gd
+│   │   └── sound_manager.gd
+│   │
+│   ├── core/                # Base classes, custom resources, & utilities
+│   │   ├── data/            # Custom Resource definitions (.tres files)
+│   │   │   ├── stats_resource.gd
+│   │   │   └── item_resource.gd
+│   │   └── utils/
+│   │
+│   ├── entities/            # All interactive game actors
+│   │   ├── player/
+│   │   │   ├── player.tscn
+│   │   │   ├── player.gd
+│   │   │   └── state_machine/
+│   │   └── enemies/
+│   │       ├── slime/
+│   │       │   ├── slime.tscn
+│   │       │   └── slime.gd
+│   │       └── boss/
+│   │
+│   ├── items_and_inventory/ # RPG item systems
+│   │   ├── items/
+│   │   └── inventory_ui/
+│   │
+│   ├── levels/              # World scenes & level components
+│   │   ├── templates/       # Base level scenes
+│   │   ├── level_01.tscn
+│   │   └── level_02.tscn
+│   │
+│   ├── systems/             # Modular gameplay systems
+│   │   ├── combat/          # Hitboxes, hurtboxes, damage logic
+│   │   ├── dialogue/
+│   │   └── quest/
+│   │
+│   └── ui/                  # User Interface components
+│       ├── menus/           # Main menu, pause menu, settings
+│       ├── hud/             # Health bars, mini-map, hotbar
+│       └── components/      # Reusable buttons, popups
+│
+└── project.godot
